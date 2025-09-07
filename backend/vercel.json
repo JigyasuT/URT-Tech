@@ -4,5 +4,11 @@
     "index.js": {
       "runtime": "vercel-node@4.0.0"
     }
-  }
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "index.js"
+    }
+  ]
 }
