@@ -6,7 +6,7 @@ import propertyRoutes from "./routes/propertyRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import connectDB from "./utils/db.js";
 import cookieParser from "cookie-parser";
-
+import serverless from "serverless-http";
 
 dotenv.config();
 connectDB()
@@ -24,4 +24,9 @@ app.use(cookieParser());
 app.use("/api/properties", propertyRoutes);
 app.use("/api/auth", authRoutes);
 
-app.listen(process.env.PORT, () => console.log(`Server running on port ${process.env.PORT}`));
+// app.listen(process.env.PORT, () => console.log(`Server running on port ${process.env.PORT}`));
+
+
+// ✅ No app.listen() here
+export const handler = serverless(app);
+export default handler;
