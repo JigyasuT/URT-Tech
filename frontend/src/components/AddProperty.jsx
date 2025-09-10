@@ -137,7 +137,7 @@ const AddProperty = () => {
       formData.append("image", image); // key name same hona chahiye multer ke sath
 
       const res = await axios.post(
-        "http://localhost:5000/api/properties/add",
+        `${import.meta.env.VITE_API_URL}/api/properties/add`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },

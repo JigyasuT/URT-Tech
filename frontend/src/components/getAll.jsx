@@ -178,7 +178,7 @@ const GetAll = () => {
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/properties/getAll");
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/properties/getAll`);
         setProperties(res.data);
         setLoading(false);
       } catch (err) {
