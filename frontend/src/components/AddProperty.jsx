@@ -49,8 +49,8 @@ const AddProperty = () => {
         }
       );
 
-      setMessage("✅ Property added successfully!");
-      navigate("/");
+      setMessage("✅ creates  successfully!");
+      navigate("/getAll");
 
       // Clear form
       setTitle("");
@@ -75,12 +75,12 @@ const AddProperty = () => {
       }}
     >
       <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
-        Add Property
+        Create Post
       </h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Title"
+          placeholder="enter book title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
@@ -88,7 +88,7 @@ const AddProperty = () => {
         />
         <input
           type="text"
-          placeholder="Price"
+          placeholder="enter book price"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
           required
@@ -96,7 +96,7 @@ const AddProperty = () => {
         />
         <input
           type="text"
-          placeholder="Location"
+          placeholder="enter book author"
           value={location}
           onChange={(e) => setLocation(e.target.value)}
           required
@@ -110,7 +110,7 @@ const AddProperty = () => {
           style={{ width: "100%", marginBottom: "10px", padding: "8px" }}
         />
         <textarea
-          placeholder="Description"
+          placeholder="enter  book description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           required
@@ -127,7 +127,7 @@ const AddProperty = () => {
             cursor: "pointer",
           }}
         >
-          Add Property
+          Add
         </button>
       </form>
       {message && (

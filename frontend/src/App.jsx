@@ -54,19 +54,25 @@ import AdminLogin from "./components/AdminLogin";
 import AddProperty from "./components/AddProperty";
 import Navbar from "./components/Navbar";
 import PropertyDetails from "./components/PropertyDetails";
+import UserSignup from "./components/UserSignup";
+import UserLogin from "./components/UserLogin";
+import EditProperty from "./components/EditProperty";
 
 function App() {
   return (
     <>
       <Navbar/>
     <Routes>
-      <Route path="/" element={<GetAll />} />
+      <Route path="/" element={<UserSignup />} />
 
       <Route path="/getAll" element={<GetAll />} />
       <Route path="/adminlogin" element={<AdminLogin />} />
       <Route path="/addproperty" element={<AddProperty />} />
       <Route path="/adminlogin/AddProperty" element={<AddProperty />} />
       <Route path="/property/:id" element={<PropertyDetails />} />
+       <Route path="/usignup" element={<UserSignup />} />
+        <Route path="/ulogin" element={<UserLogin />} />
+        <Route path="/edit/:id" element={<EditProperty />} />
     </Routes>
     </>
   );

@@ -8,7 +8,6 @@ const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -24,6 +23,7 @@ const AdminLogin = () => {
 
       if (res.data.message === "Login successful") {
         setMessage("✅ Login successful!");
+        localStorage.setItem("isAdmin", "true"); // ✅ IMPORTANT
         // Redirect admin to protected page if needed
         navigate("/addproperty");
 

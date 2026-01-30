@@ -122,3 +122,112 @@ export const addProperty = async (req, res) => {
     return res.status(500).json({ message: "Server error" });
   }
 };
+
+
+
+
+
+// export const editProperty = async (req, res) => {
+//   try {
+//     const { id } = req.params;
+//     const { title, price, location, description } = req.body;
+
+//     // find property
+//     const property = await Property.findById(id);
+//     if (!property) {
+//       return res.status(404).json({ message: "Property not found" });
+//     }
+
+//     // update text fields (agar aaye ho to)
+//     if (title) property.title = title;
+//     if (price) property.price = price;
+//     if (location) property.location = location;
+//     if (description) property.description = description;
+
+//     // agar new image aayi ho
+//     if (req.file) {
+//       const file = req.file;
+//       const fileUri = getDataUri(file);
+//       const cloudResponse = await cloudinary.uploader.upload(
+//         fileUri.content
+//       );
+
+//       property.image = cloudResponse.secure_url;
+//     }
+
+//     await property.save();
+
+//     return res.status(200).json({
+//       message: "Property updated successfully",
+//       property,
+//     });
+//   } catch (error) {
+//     console.error("Edit Property Error:", error);
+//     return res.status(500).json({ message: "Server error" });
+//   }
+// };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export const editProperty = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { title, price, location, description } = req.body;
+
+    // 1️⃣ find property
+    const property = await Property.findById(id);
+    if (!property) {
+      return res.status(404).json({ message: "Property not found" });
+    }
+
+    // 2️⃣ update fields (sirf jo aaye ho)
+    if (title !== undefined) property.title = title;
+    if (price !== undefined) property.price = price;
+    if (location !== undefined) property.location = location;
+    if (description !== undefined) property.description = description;
+
+    // 3️⃣ new image upload (optional)
+    if (req.file) {
+      const fileUri = getDataUri(req.file);
+      const cloudResponse = await cloudinary.uploader.upload(
+        fileUri.content
+      );
+
+      property.image = cloudResponse.secure_url;
+    }
+
+    // 4️⃣ save updated property
+    await property.save();
+
+    return res.status(200).json({
+      success: true,
+      message: "Property updated successfully",
+      property,
+    });
+  } catch (error) {
+    console.error("Edit Property Error:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Server error",
+    });
+  }
+};
